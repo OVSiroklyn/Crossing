@@ -1,4 +1,3 @@
-/*
 float * transmutate(float *tA, float *tB)
 {
 	float t_fin[2];
@@ -14,4 +13,3 @@ float * crossing(float *cA, float *cB)
 	c_fin[1] = cA[0] * c_fin[0] + cA[1];
 	return(c_fin);
 }
-*/
