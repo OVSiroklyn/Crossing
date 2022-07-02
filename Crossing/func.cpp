@@ -1,3 +1,7 @@
+
+#include <math.h>
+#include "typedef.h"
+
 float * transmutate(float *tA, float *tB)
 {
 	float t_fin[2];
@@ -12,4 +16,9 @@ float * crossing(float *cA, float *cB)
 	c_fin[0] = (cB[1] - cA[1]) / (cA[0] - cB[0]);
 	c_fin[1] = cA[0] * c_fin[0] + cA[1];
 	return(c_fin);
+}
+
+float len(float *kat1, float *kat2)
+{
+	return (sqrt(pow((kat1[0] - kat2[0]), 2) + pow((kat1[1] - kat2[1]), 2)));
 }

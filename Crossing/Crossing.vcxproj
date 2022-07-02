@@ -151,11 +151,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="checkcrossing.cpp" />
     <ClCompile Include="Crossing.cpp" />
     <ClCompile Include="func.cpp" />
+    <ClCompile Include="typedef.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="checkcrossing.h" />
     <ClInclude Include="func.h" />
+    <ClInclude Include="typedef.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

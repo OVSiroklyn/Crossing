@@ -1,8 +1,8 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <locale.h>
-#include <math.h>
-#include "func.h"
+#include "typedef.h"
+#include "checkcrossing.h"
 
 int main(void)
 {
@@ -10,10 +10,10 @@ int main(void)
 	setlocale(LC_CTYPE, "ukr");
 
 	//Оголошення зімнних
-	float pry[2], A[2], B[2];
+	float pry[2], A[2], B[2], C;
 
 	// Оголошення призначення програми.
-	printf("Ця програма перевiряє, чи перетинаються:\nВiдрiзок типу:   A(x1, y1), B(x2,y2)\nПряма типу:      ax + b = y \n\n");
+	printf("\nЦя програма перевiряє, чи перетинаються:\nВiдрiзок типу:   A(x1, y1), B(x2,y2)\nПряма типу:      ax + b = y \n\n");
 
 	// Відрізок.
 	printf("Введiть x1: ");
@@ -30,9 +30,9 @@ int main(void)
 	printf("Введiть y2: ");
 	scanf("%f", &B[1]);
 	// Пряма
-	printf("Введiть a: ");
+	printf("Введiть a : ");
 	scanf("%f", &pry[0]);
-	printf("Введiть b: ");
+	printf("Введiть b : ");
 	scanf("%f", &pry[1]);
 
 
@@ -43,27 +43,10 @@ int main(void)
 	else
 		printf("%.2fx - %.2f = y.\n", pry[0], pry[1] * (-1));
 
-	// Визначення прямої, що проходить через вiдрiзок АВ.
-	float *vid;
-	vid = transmutate(A, B);
+	C = checkcrossing(A, B, pry);
 
-	if (vid[1] >= 0)
-		printf("\nПряма, що проходить через AB:   %.2fx + %.2f = y.\n", vid[0], vid[1]);
-	else
-		printf("\nПряма, що проходить через AB:   %.2fx - %.2f = y.\n", vid[0], vid[1] * (-1));
-
-	printf("\nРандомные тесты посреди кода:\nC(%.2f, %.2f) ", vid[0], vid[1]);
-	printf("C(%.2f, %.2f) \n\n", pry[0], pry[1]);
-
-	// Визначення точки перетину двох прямих (З коефіцієнтами ab і cd).
-	float *res;
-	res = crossing(pry, vid);
-
-	printf("C(%.2f, %.2f) ", res[0], res[1]);
-
-	// Перевірка, чи належить ця точка перетину відрізку. 
-	if ((pow((A[0] - B[0]), 2) + pow((A[1] - B[1]), 2)) == ((pow((A[0] - res[0]), 2) + pow((A[1] - res[1]), 2)) + (pow((res[0] - B[0]), 2) + pow((res[1] - B[1]), 2))))
-		printf("\nТак, пряма та вiдрiзок перетинаються у точцi:   C(%.2f, %.2f) ", res[0], res[1]);
+	if (C == 1)
+		printf("\nТак, пряма та вiдрiзок перетинаються у точцi:   C(%.2f, %.2f).\n", res[0], res[1]);
 	else
 		printf("\nНi, пряма та вiдрiзок не перетинаються.\n");
 
