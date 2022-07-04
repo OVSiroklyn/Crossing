@@ -13,6 +13,7 @@ int main(int argc, char **argv)
 
 	//Оголошення зiмнних
 	float pry[2], A[2], B[2], C;
+	int c;
 
 	// Оголошення призначення програми.
 	printf("Ця програма перевiряє, чи перетинаються:\nВiдрiзок типу:   A(x1, y1), B(x2,y2)\nПряма типу:      ax + b = y \n");
@@ -46,8 +47,6 @@ int main(int argc, char **argv)
 		scanf("%f", &A[1]);
 		printf("Введiть x2: ");
 		scanf("%f", &B[0]);
-		if (A[0] == B[0]) // Перевiрка на помилку.
-			ver = true;
 		printf("Введiть y2: ");
 		scanf("%f", &B[1]);
 		// Пряма
@@ -70,12 +69,23 @@ int main(int argc, char **argv)
 		printf("%.2fx - %.2f = y.\n", pry[0], pry[1] * (-1));
 
 	C = checkcrossing(A, B, pry);
+	c = (int)C;
 
-	if (C == 1)
-		printf("\nТак, пряма та вiдрiзок перетинаються у точцi:   C(%.2f, %.2f).\n", res[0], res[1]);
-	else
+	switch (c)
+	{
+	case 0:
 		printf("\nНi, пряма та вiдрiзок не перетинаються.\n");
-
+		break;
+	case 1:
+		printf("\nТак, пряма та вiдрiзок перетинаються у точцi:   C(%.2f, %.2f).\n", res[0], res[1]);
+		break;
+	case 2:
+		printf("\nВiдрiзок знаходиться у прямiй.\n");
+		break;
+	case 3:
+		printf("\nВiдрiзок та пряма паралельнi.\n");
+		break;
+	}
 
 	return 0;
 }
