@@ -4,16 +4,24 @@
 
 float checkcrossing(float *ccA, float *ccB, float *ccpry)
 {
-	// Визначення прямої, що проходить через вiдрiзок АВ.
-	float *fast, vid[2];
-	fast = transmutate(ccA, ccB);
-	vid[0] = fast[0];
-	vid[1] = fast[1];
+	if (ver == false) //Звичайний випадок.
+	{
+		// Визначення прямої, що проходить через вiдрiзок АВ.
+		float *fast, vid[2];
+		fast = transmutate(ccA, ccB);
+		vid[0] = fast[0];
+		vid[1] = fast[1];
 
-	// Визначення точки перетину двох прямих (З коефіцієнтами ab і cd).
-	fast = crossing(ccpry, vid);
-	res[0] = fast[0];
-	res[1] = fast[1];
+		// Визначення точки перетину двох прямих (З коефіцієнтами ab і cd).
+		fast = crossing(ccpry, vid);
+		res[0] = fast[0];
+		res[1] = fast[1];
+	}
+	else // Якщо відрізок паралельний осі у.
+	{
+		res[0] = ccA[0];
+		res[1] = ccpry[0] * ccA[0] + ccpry[1];
+	}
 
 	// Визначення довжин вiдрiзкiв.
 	float len_vid0, len_res1, len_res2;
@@ -26,4 +34,5 @@ float checkcrossing(float *ccA, float *ccB, float *ccpry)
 		return 1;
 	else
 		return 0;
+
 }

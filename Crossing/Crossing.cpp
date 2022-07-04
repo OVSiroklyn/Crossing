@@ -23,10 +23,7 @@ int main(void)
 	printf("Введiть x2: ");
 	scanf("%f", &B[0]);
 	if (A[0] == B[0]) // Перевiрка на помилку.
-	{
-		printf("x2 не може дорiвнювати x1.");
-		return 0;
-	}
+		ver = true;
 	printf("Введiть y2: ");
 	scanf("%f", &B[1]);
 	// Пряма
