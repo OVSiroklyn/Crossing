@@ -4,12 +4,7 @@
 
 float checkcrossing(float *ccA, float *ccB, float *ccpry)
 {
-	// Перевірка, якщо відрізок вертикальний.
-	bool ver = false;
-	if (ccA[0] == ccB[0])
-		ver = true;
-
-	if (ver == false) //Звичайний випадок.
+	if (ccA[0] != ccB[0]) 	// Перевірка, якщо відрізок вертикальний.
 	{
 		// Визначення прямої, що проходить через вiдрiзок АВ.
 		float *fast, vid[2];

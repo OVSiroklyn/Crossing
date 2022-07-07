@@ -68,6 +68,12 @@ int main(int argc, char **argv)
 	else
 		printf("%.2fx - %.2f = y.\n", pry[0], pry[1] * (-1));
 
+	if ((A[0] == B[0]) && (A[1] == B[1]))
+	{
+		printf("\nТочки A i В не можуть знаходитися у однiй точцi.\n");
+		return 0;
+	}
+
 	C = checkcrossing(A, B, pry);
 	c = (int)C;
 
